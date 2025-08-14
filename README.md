@@ -67,7 +67,7 @@ The **ACEP HIPAA Audit Assistant** is a comprehensive, healthcare compliance man
 curl -sSL https://raw.githubusercontent.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant/main/install.sh | bash
 ```
 
-**Run Application**
+ **Run Application**
 ```bash
 ./run_acep_hipaa.sh
 ```
