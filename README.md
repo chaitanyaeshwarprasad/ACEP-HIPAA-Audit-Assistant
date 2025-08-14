@@ -72,16 +72,19 @@ cd ACEP-HIPAA-Audit-Assistant
 
 #### **Step 2: Permissions**
 ```bash
+# Permissions
 chmod +x run_acep_hipaa.sh install.sh
 ```
 
-#### **Step 3: **Permissions**
+#### **Step 3: **Installation**
 ```bash
+# Installation
 ./install.sh
 ```
 
-#### **Step 4: **Run Application**
+#### **Step 4: **Start Application**
 ```bash
+# Start Application
 ./run_acep_hipaa.sh
 ```
 
