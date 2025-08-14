@@ -18,7 +18,6 @@
 
 ## 📋 **Table of Contents**
 
-- [🚀 Quick Start](#-quick-start)
 - [⚙️ System Requirements](#️-system-requirements)
 - [🔧 Installation](#-installation)
 - [🎯 Features](#-features)
@@ -26,7 +25,6 @@
 - [📱 Screenshots](#-screenshots)
 - [🛠️ Development](#️-development)
 - [🔐 Security](#-security)
-- [📄 License](#-license)
 - [👨‍💻 Creator](#️-creator)
 
 ---
