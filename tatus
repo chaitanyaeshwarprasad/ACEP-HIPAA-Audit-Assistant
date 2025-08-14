@@ -1,5 +1,0 @@
-[33md6e5060[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Simplify setup: consolidate all setup functionality into one comprehensive setup.sh script
-[33mc3d6bd1[m Add one-command setup script and improve automated setup process
-[33m4ddd941[m Add cross-platform setup instructions and troubleshooting guide to README
-[33m08b6f4f[m Fix cross-platform compatibility and add Linux setup script
-[33m25852a5[m Fix dependency compatibility issues and update requirements.txt for Python 3.13 support
