@@ -4,12 +4,11 @@
 
 **Professional HIPAA Security Rule Compliance Tool**
 
-*Streamline your healthcare compliance assessments with modern, intuitive interface*
+*Streamline your healthcare compliance assessments with a modern, intuitive interface*
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
 [![Flask](https://img.shields.io/badge/Flask-2.3.3+-green.svg)](https://flask.palletsprojects.com)
 [![Kali Linux](https://img.shields.io/badge/Kali%20Linux-2023.3+-red.svg)](https://www.kali.org/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-1.0.0-brightgreen.svg)](https://github.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant)
 
 </div>
