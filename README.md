@@ -59,7 +59,26 @@ The **ACEP HIPAA Audit Assistant** is a comprehensive, healthcare compliance man
 
 ## 🔧 **Installation**
 
-### **📥 Method 1: Automated Setup (Recommended)**
+### **📥 Method 1: One-Command Setup (Super Easy!)**
+
+#### **For Linux Systems (Kali/Ubuntu/Debian)**
+```bash
+# Download and run the one-command setup
+curl -sSL https://raw.githubusercontent.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant/main/quick_setup.sh | bash
+
+# OR download first, then run
+wget https://raw.githubusercontent.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant/main/quick_setup.sh
+chmod +x quick_setup.sh
+./quick_setup.sh
+```
+
+This script automatically:
+1. ✅ Clones the repository
+2. ✅ Makes scripts executable  
+3. ✅ Runs automated setup
+4. ✅ Launches the application
+
+### **📥 Method 2: Automated Setup (Recommended)**
 
 #### **Step 1: Clone Repository**
 ```bash

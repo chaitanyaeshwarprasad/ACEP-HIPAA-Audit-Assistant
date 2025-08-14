@@ -165,46 +165,14 @@ else
     exit 1
 fi
 
-# Create quick launcher script
-print_status "Creating quick launcher script..."
-cat > run_acep_hipaa.sh << 'EOF'
-#!/bin/bash
-
-# ACEP HIPAA AUDIT ASSISTANT - Quick Launcher
-# Created by Chaitanya Eshwar Prasad
-
-echo "🏥 Starting ACEP HIPAA AUDIT ASSISTANT..."
-
-# Check if virtual environment exists
-if [ ! -d "acep_hipaa_venv" ]; then
-    echo "❌ Virtual environment not found. Please run the setup script first."
-    echo "   Run: ./acep_hipaa_auto_setup.sh"
-    exit 1
+# Check if run script exists and make it executable
+print_status "Checking run script..."
+if [ -f "run_acep_hipaa.sh" ]; then
+    chmod +x run_acep_hipaa.sh
+    print_success "Run script permissions updated."
+else
+    print_warning "Run script not found. Please ensure run_acep_hipaa.sh exists."
 fi
-
-# Activate virtual environment
-echo "🔧 Activating virtual environment..."
-source acep_hipaa_venv/bin/activate
-
-# Check if app.py exists
-if [ ! -f "app.py" ]; then
-    echo "❌ app.py not found. Please ensure you're in the correct directory."
-    exit 1
-fi
-
-# Start the application
-echo "🚀 Starting HIPAA Audit Assistant..."
-echo "📱 Access the application at: http://localhost:5000"
-echo "🔑 Default credentials: acep / acep123"
-echo ""
-echo "Press Ctrl+C to stop the application"
-echo ""
-
-python3 app.py
-EOF
-
-chmod +x run_acep_hipaa.sh
-print_success "Quick launcher script created."
 
 # Final setup test
 print_status "Running final setup test..."
