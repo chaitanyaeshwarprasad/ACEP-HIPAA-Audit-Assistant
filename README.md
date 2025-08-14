@@ -82,7 +82,46 @@ chmod +x acep_hipaa_auto_setup.sh run_acep_hipaa.sh
 ./run_acep_hipaa.sh
 ```
 
-### **📥 Method 2: Manual Setup**
+### **📥 Method 2: Cross-Platform Setup**
+
+#### **For Linux Systems (Ubuntu/Debian/Kali)**
+```bash
+# Run the Linux setup script
+chmod +x setup_linux.sh
+./setup_linux.sh
+
+# Activate virtual environment and run
+source acep_hipaa_venv/bin/activate
+python app.py
+```
+
+#### **For Windows Systems**
+```bash
+# Create virtual environment
+python -m venv acep_hipaa_venv
+acep_hipaa_venv\Scripts\activate
+
+# Install requirements
+pip install -r requirements.txt
+
+# Run application
+python app.py
+```
+
+#### **For macOS Systems**
+```bash
+# Create virtual environment
+python3 -m venv acep_hipaa_venv
+source acep_hipaa_venv/bin/activate
+
+# Install requirements
+pip install -r requirements.txt
+
+# Run application
+python app.py
+```
+
+### **📥 Method 3: Manual Setup (Advanced Users)**
 
 #### **Step 1: Install Python Dependencies**
 ```bash
@@ -185,6 +224,41 @@ After successful setup, access the application:
 - **👤 Username**: `acep`
 - **🔑 Password**: `acep123`
 - **🔒 Security Note**: **IMPORTANT** - Change default credentials immediately after first login
+
+---
+
+## 🔧 **Troubleshooting**
+
+### **Common Issues & Solutions**
+
+#### **1. ModuleNotFoundError: No module named 'flask'**
+```bash
+# Solution: Activate virtual environment first
+source acep_hipaa_venv/bin/activate  # Linux/macOS
+# OR
+acep_hipaa_venv\Scripts\activate     # Windows
+```
+
+#### **2. Pillow Installation Issues**
+```bash
+# Solution: Use flexible version constraints
+pip install "Pillow>=10.0.0,<11.0.0"
+```
+
+#### **3. python-magic Issues on Windows**
+```bash
+# Note: python-magic requires libmagic (not available on Windows)
+# The application will work without it, but file type detection may be limited
+```
+
+#### **4. Python Version Compatibility**
+```bash
+# Ensure Python 3.8+ is installed
+python3 --version
+# If using Python 3.13+, some packages may need flexible version constraints
+```
+
+---
 
 ### **🛡️ Security Features**
 - **Session Management** - Secure user sessions with timeout
