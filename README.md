@@ -57,46 +57,82 @@ The **ACEP HIPAA Audit Assistant** is a comprehensive, healthcare compliance man
 
 ---
 
-## 🔧 **Installation**
+## 🔧 **Installation & Setup**
 
-### **📥 Method 1: One-Command Setup (Super Easy!)**
+### **🚀 Quick Start Guide**
 
-#### **For Linux Systems (Kali/Ubuntu/Debian)**
+**Want to get running in 30 seconds?** Use this one command:
+
 ```bash
-# Download and run the complete setup
-curl -sSL https://raw.githubusercontent.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant/main/setup.sh | bash
-
-# OR download first, then run
-wget https://raw.githubusercontent.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant/main/setup.sh
-chmod +x setup.sh
-./setup.sh
+curl -sSL https://raw.githubusercontent.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant/main/install.sh | bash
 ```
 
-This script automatically:
-1. ✅ **Clones the repository**
-2. ✅ **Sets up Python environment**
-3. ✅ **Installs all dependencies**
-4. ✅ **Launches the application**
+**What you'll get:**
+- ✅ Complete HIPAA compliance tool
+- ✅ Professional web interface
+- ✅ All dependencies installed
+- ✅ Application running automatically
+- ✅ Access at http://localhost:5000
 
-**That's it!** One command to get everything running.
+**Default login:** `acep` / `acep123`
+
+---
+
+### **📥 Method 1: One-Command Setup (Recommended - Super Easy!)**
+
+#### **🚀 Quick Start (Linux/macOS)**
+```bash
+# Download and run everything in one command
+curl -sSL https://raw.githubusercontent.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant/main/install.sh | bash
+```
+
+#### **📥 Alternative Download Method**
+```bash
+# Download the installation script first
+wget https://raw.githubusercontent.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant/main/install.sh
+
+# Make it executable and run
+chmod +x install.sh
+./install.sh
+```
+
+#### **🎯 What Happens Automatically:**
+1. ✅ **Repository Setup** - Clones from GitHub (if needed)
+2. ✅ **Environment Setup** - Creates Python virtual environment
+3. ✅ **Dependency Installation** - Installs all required packages
+4. ✅ **Application Configuration** - Sets up directories and permissions
+5. ✅ **Testing & Validation** - Verifies everything works correctly
+6. ✅ **Launch** - Starts the application automatically
+
+**🎉 That's it! One command gets everything running.**
+
+---
 
 ### **📥 Method 2: Manual Setup (Advanced Users)**
 
 #### **Step 1: Clone Repository**
 ```bash
+# Clone the repository
 git clone https://github.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant.git
+
+# Navigate to project directory
 cd ACEP-HIPAA-Audit-Assistant
 ```
 
-#### **Step 2: Run Setup Script**
+#### **Step 2: Run Installation Script**
 ```bash
-chmod +x setup.sh
-./setup.sh
+# Make installation script executable
+chmod +x install.sh
+
+# Run the comprehensive installation
+./install.sh
 ```
 
-**That's it!** The setup script handles everything else automatically.
+**🔧 The installation script handles everything else automatically!**
 
-### **📥 Method 3: Manual Setup (Advanced Users)**
+---
+
+### **📥 Method 3: Manual Setup (Expert Users)**
 
 #### **Step 1: Install Python Dependencies**
 ```bash
@@ -113,7 +149,9 @@ pip install -r requirements.txt
 python app.py
 ```
 
-### **📥 Method 3: Docker Setup**
+---
+
+### **📥 Method 4: Docker Setup**
 ```bash
 # Build Docker image
 docker build -t acep-hipaa-assistant .
@@ -121,6 +159,38 @@ docker build -t acep-hipaa-assistant .
 # Run container
 docker run -p 5000:5000 acep-hipaa-assistant
 ```
+
+---
+
+## ⚠️ **System Requirements & Compatibility**
+
+### **🖥️ Operating System Support**
+| OS | Status | Notes |
+|----|---------|-------|
+| **Kali Linux 2023.3+** | ✅ **Fully Supported** | Recommended for cybersecurity professionals |
+| **Ubuntu 20.04+** | ✅ **Fully Supported** | Excellent compatibility |
+| **Debian 11+** | ✅ **Fully Supported** | Stable and reliable |
+| **CentOS 8+ / RHEL 8+** | ✅ **Fully Supported** | Enterprise-grade support |
+| **Windows 10/11** | ✅ **Supported via WSL2** | Use Ubuntu/Kali Linux in WSL2 |
+| **macOS 10.15+** | ✅ **Fully Supported** | Native support with Homebrew |
+
+### **🐍 Python Requirements**
+- **Python Version**: 3.8+ (3.9+ Recommended for optimal performance)
+- **Package Manager**: pip (latest version)
+- **Virtual Environment**: Highly recommended for production use
+- **Architecture**: x86_64, ARM64 (Apple Silicon supported)
+
+### **💾 System Resources**
+- **RAM**: Minimum 2GB, Recommended 4GB+ for large datasets
+- **Storage**: 500MB free space for application and database
+- **Network**: Internet access for initial setup and updates
+- **Browser**: Modern browser with JavaScript enabled (Chrome, Firefox, Safari, Edge)
+
+### **🔧 Prerequisites**
+- **Git**: Required for repository cloning
+- **Python 3.8+**: Core runtime environment
+- **pip**: Python package manager
+- **sudo access**: For system package installation (Linux/macOS)
 
 ---
 
@@ -168,8 +238,8 @@ docker run -p 5000:5000 acep-hipaa-assistant
 ACEP-HIPAA-Audit-Assistant/
 ├── 🐍 app.py                           # Main Flask application with routing
 ├── 📋 requirements.txt                 # Python dependencies and versions
-├── 🚀 setup.sh                        # Complete setup & launch script
-├── 🚀 run_acep_hipaa.sh              # Application launcher (used by setup.sh)
+├── 🚀 install.sh                      # Complete installation & launch script
+├── 🚀 run_acep_hipaa.sh              # Application launcher (used by install.sh)
 ├── 🎨 templates/                      # HTML templates and views
 │   ├── base.html                      # Base template with navigation
 │   ├── dashboard.html                 # Main dashboard with statistics
@@ -202,9 +272,9 @@ After successful setup, access the application:
 
 ---
 
-## 🔧 **Troubleshooting**
+## 🔧 **Troubleshooting & Support**
 
-### **Common Issues & Solutions**
+### **🚨 Common Issues & Solutions**
 
 #### **1. ModuleNotFoundError: No module named 'flask'**
 ```bash
@@ -212,25 +282,62 @@ After successful setup, access the application:
 source acep_hipaa_venv/bin/activate  # Linux/macOS
 # OR
 acep_hipaa_venv\Scripts\activate     # Windows
+
+# Then run the application
+python app.py
 ```
 
 #### **2. Pillow Installation Issues**
 ```bash
 # Solution: Use flexible version constraints
 pip install "Pillow>=10.0.0,<11.0.0"
+
+# Alternative: Install system dependencies first (Linux)
+sudo apt install python3-dev python3-pip  # Ubuntu/Debian
+sudo yum install python3-devel python3-pip  # CentOS/RHEL
 ```
 
 #### **3. python-magic Issues on Windows**
 ```bash
 # Note: python-magic requires libmagic (not available on Windows)
 # The application will work without it, but file type detection may be limited
+# Use WSL2 with Ubuntu/Kali Linux for full functionality
 ```
 
 #### **4. Python Version Compatibility**
 ```bash
 # Ensure Python 3.8+ is installed
 python3 --version
+
 # If using Python 3.13+, some packages may need flexible version constraints
+# The setup.sh script handles this automatically
+```
+
+#### **5. Permission Denied Errors**
+```bash
+# Solution: Make scripts executable
+chmod +x setup.sh run_acep_hipaa.sh
+
+# Or run with proper permissions
+sudo chown -R $USER:$USER .
+```
+
+#### **6. Virtual Environment Issues**
+```bash
+# Remove and recreate virtual environment
+rm -rf acep_hipaa_venv
+python3 -m venv acep_hipaa_venv
+source acep_hipaa_venv/bin/activate
+pip install -r requirements.txt
+```
+
+#### **7. Network/Proxy Issues**
+```bash
+# If behind corporate proxy, configure pip
+pip install --proxy http://proxy.company.com:8080 -r requirements.txt
+
+# Or use alternative package index
+pip install -i https://pypi.org/simple/ -r requirements.txt
 ```
 
 ---
