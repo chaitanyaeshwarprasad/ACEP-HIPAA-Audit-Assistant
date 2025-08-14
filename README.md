@@ -63,22 +63,24 @@ The **ACEP HIPAA Audit Assistant** is a comprehensive, healthcare compliance man
 
 #### **For Linux Systems (Kali/Ubuntu/Debian)**
 ```bash
-# Download and run the one-command setup
-curl -sSL https://raw.githubusercontent.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant/main/quick_setup.sh | bash
+# Download and run the complete setup
+curl -sSL https://raw.githubusercontent.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant/main/setup.sh | bash
 
 # OR download first, then run
-wget https://raw.githubusercontent.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant/main/quick_setup.sh
-chmod +x quick_setup.sh
-./quick_setup.sh
+wget https://raw.githubusercontent.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant/main/setup.sh
+chmod +x setup.sh
+./setup.sh
 ```
 
 This script automatically:
-1. ✅ Clones the repository
-2. ✅ Makes scripts executable  
-3. ✅ Runs automated setup
-4. ✅ Launches the application
+1. ✅ **Clones the repository**
+2. ✅ **Sets up Python environment**
+3. ✅ **Installs all dependencies**
+4. ✅ **Launches the application**
 
-### **📥 Method 2: Automated Setup (Recommended)**
+**That's it!** One command to get everything running.
+
+### **📥 Method 2: Manual Setup (Advanced Users)**
 
 #### **Step 1: Clone Repository**
 ```bash
@@ -86,59 +88,13 @@ git clone https://github.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant.gi
 cd ACEP-HIPAA-Audit-Assistant
 ```
 
-#### **Step 2: Make Scripts Executable**
+#### **Step 2: Run Setup Script**
 ```bash
-chmod +x acep_hipaa_auto_setup.sh run_acep_hipaa.sh
+chmod +x setup.sh
+./setup.sh
 ```
 
-#### **Step 3: Run Automated Setup**
-```bash
-./acep_hipaa_auto_setup.sh
-```
-
-#### **Step 4: Launch Application**
-```bash
-./run_acep_hipaa.sh
-```
-
-### **📥 Method 2: Cross-Platform Setup**
-
-#### **For Linux Systems (Ubuntu/Debian/Kali)**
-```bash
-# Run the Linux setup script
-chmod +x setup_linux.sh
-./setup_linux.sh
-
-# Activate virtual environment and run
-source acep_hipaa_venv/bin/activate
-python app.py
-```
-
-#### **For Windows Systems**
-```bash
-# Create virtual environment
-python -m venv acep_hipaa_venv
-acep_hipaa_venv\Scripts\activate
-
-# Install requirements
-pip install -r requirements.txt
-
-# Run application
-python app.py
-```
-
-#### **For macOS Systems**
-```bash
-# Create virtual environment
-python3 -m venv acep_hipaa_venv
-source acep_hipaa_venv/bin/activate
-
-# Install requirements
-pip install -r requirements.txt
-
-# Run application
-python app.py
-```
+**That's it!** The setup script handles everything else automatically.
 
 ### **📥 Method 3: Manual Setup (Advanced Users)**
 
@@ -212,8 +168,8 @@ docker run -p 5000:5000 acep-hipaa-assistant
 ACEP-HIPAA-Audit-Assistant/
 ├── 🐍 app.py                           # Main Flask application with routing
 ├── 📋 requirements.txt                 # Python dependencies and versions
-├── 🚀 acep_hipaa_auto_setup.sh       # Automated environment setup script
-├── 🚀 run_acep_hipaa.sh              # Application launcher and startup
+├── 🚀 setup.sh                        # Complete setup & launch script
+├── 🚀 run_acep_hipaa.sh              # Application launcher (used by setup.sh)
 ├── 🎨 templates/                      # HTML templates and views
 │   ├── base.html                      # Base template with navigation
 │   ├── dashboard.html                 # Main dashboard with statistics

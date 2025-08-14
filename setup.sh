@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ACEP HIPAA AUDIT ASSISTANT - Automated Setup Script
+# ACEP HIPAA AUDIT ASSISTANT - Complete Setup & Launch Script
 # Created by Chaitanya Eshwar Prasad
-# This script automates the setup of the HIPAA Audit Assistant on Kali Linux
+# This script handles everything: cloning, setup, and launching
 
 set -e  # Exit on any error
 
@@ -11,6 +11,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
 NC='\033[0m' # No Color
 
 # Function to print colored output
@@ -30,18 +31,23 @@ print_error() {
     echo -e "${RED}[ERROR]${NC} $1"
 }
 
+print_step() {
+    echo -e "${PURPLE}[STEP]${NC} $1"
+}
+
 # Banner
 echo -e "${BLUE}"
 echo "╔══════════════════════════════════════════════════════════════╗"
 echo "║                    ACEP HIPAA Audit Assistant                ║"
-echo "║                 Automated Setup Script                       ║"
+echo "║                 Complete Setup & Launch Script               ║"
 echo "║                                                              ║"
-echo "║  Built for healthcare compliance professionals               ║"
-echo "║  HIPAA Security Rule compliance made simple                 ║"
+echo "║  This script will automatically:                             ║"
+echo "║  1. Clone the repository                                     ║"
+echo "║  2. Set up the environment                                   ║"
+echo "║  3. Install dependencies                                     ║"
+echo "║  4. Launch the application                                   ║"
 echo "╚══════════════════════════════════════════════════════════════╝"
 echo -e "${NC}"
-
-print_status "Starting automated setup for ACEP HIPAA AUDIT ASSISTANT..."
 
 # Check if running as root
 if [[ $EUID -eq 0 ]]; then
@@ -49,46 +55,55 @@ if [[ $EUID -eq 0 ]]; then
    exit 1
 fi
 
-# Detect OS
-print_status "Detecting operating system..."
-if [[ -f /etc/os-release ]]; then
-    . /etc/os-release
-    OS=$NAME
-    VER=$VERSION_ID
-else
-    print_error "Cannot detect OS. This script is designed for Kali Linux."
+# Check if git is installed
+if ! command -v git &> /dev/null; then
+    print_error "Git is not installed. Please install git first."
+    print_status "On Ubuntu/Debian/Kali: sudo apt install git"
+    print_status "On CentOS/RHEL: sudo yum install git"
+    print_status "On macOS: brew install git"
     exit 1
 fi
 
-print_status "Detected OS: $OS $VER"
-
-# Check if it's Kali Linux
-if [[ "$OS" != *"Kali"* ]]; then
-    print_warning "This script is optimized for Kali Linux. Other distributions may work but are not tested."
-    read -p "Continue anyway? (y/N): " -n 1 -r
-    echo
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        exit 1
-    fi
+# Check if Python 3 is installed
+if ! command -v python3 &> /dev/null; then
+    print_error "Python 3 is not installed. Please install Python 3.8+ first."
+    print_status "On Ubuntu/Debian/Kali: sudo apt install python3 python3-pip python3-venv"
+    print_status "On CentOS/RHEL: sudo yum install python3 python3-pip python3-venv"
+    print_status "On macOS: brew install python3"
+    exit 1
 fi
 
 # Check Python version
-print_status "Checking Python installation..."
-if command -v python3 &> /dev/null; then
-    PYTHON_VERSION=$(python3 --version | cut -d' ' -f2)
-    print_status "Found Python $PYTHON_VERSION"
-    
-    # Check if version is 3.8 or higher
-    if python3 -c "import sys; exit(0 if sys.version_info >= (3, 8) else 1)"; then
-        print_success "Python version is compatible (3.8+)"
-    else
-        print_error "Python 3.8 or higher is required. Found: $PYTHON_VERSION"
-        exit 1
-    fi
-else
-    print_error "Python 3 is not installed. Please install Python 3.8 or higher."
+PYTHON_VERSION=$(python3 --version | cut -d' ' -f2)
+if ! python3 -c "import sys; exit(0 if sys.version_info >= (3, 8) else 1)"; then
+    print_error "Python 3.8 or higher is required. Found: $PYTHON_VERSION"
     exit 1
 fi
+
+print_success "System requirements check passed! Python $PYTHON_VERSION detected."
+
+# Step 1: Clone Repository (if not already in the directory)
+print_step "Step 1: Setting up repository..."
+if [ ! -f "app.py" ] || [ ! -f "requirements.txt" ]; then
+    print_status "Repository not found. Cloning from GitHub..."
+    
+    # Get the current directory name
+    CURRENT_DIR=$(basename "$PWD")
+    
+    if [ "$CURRENT_DIR" = "ACEP-HIPAA-Audit-Assistant" ]; then
+        print_warning "Already in ACEP-HIPAA-Audit-Assistant directory. Skipping clone."
+    else
+        # Clone to a new directory
+        git clone https://github.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant.git
+        cd ACEP-HIPAA-Audit-Assistant
+        print_success "Repository cloned successfully!"
+    fi
+else
+    print_success "Already in ACEP-HIPAA-Audit-Assistant directory. Skipping clone."
+fi
+
+# Step 2: Environment Setup
+print_step "Step 2: Setting up Python environment..."
 
 # Check if virtual environment already exists
 if [ -d "acep_hipaa_venv" ]; then
@@ -121,14 +136,23 @@ print_status "Upgrading pip..."
 pip install --upgrade pip
 print_success "Pip upgraded successfully."
 
-# Install system dependencies (for Kali Linux)
-print_status "Installing system dependencies..."
+# Step 3: Install Dependencies
+print_step "Step 3: Installing dependencies..."
+
+# Install system dependencies (for Linux)
 if command -v apt &> /dev/null; then
+    print_status "Installing system dependencies (Ubuntu/Debian/Kali)..."
     sudo apt update
     sudo apt install -y python3-dev python3-pip python3-venv sqlite3
     print_success "System dependencies installed."
-else
-    print_warning "Package manager 'apt' not found. Please install required dependencies manually."
+elif command -v yum &> /dev/null; then
+    print_status "Installing system dependencies (CentOS/RHEL)..."
+    sudo yum install -y python3-devel python3-pip python3-venv sqlite
+    print_success "System dependencies installed."
+elif command -v dnf &> /dev/null; then
+    print_status "Installing system dependencies (Fedora)..."
+    sudo dnf install -y python3-devel python3-pip python3-venv sqlite
+    print_success "System dependencies installed."
 fi
 
 # Install Python requirements
@@ -140,6 +164,9 @@ else
     print_error "requirements.txt not found. Please ensure you're in the correct directory."
     exit 1
 fi
+
+# Step 4: Setup Application
+print_step "Step 4: Setting up application..."
 
 # Create necessary directories
 print_status "Creating necessary directories..."
@@ -163,15 +190,6 @@ if python3 -c "import flask; print('Flask imported successfully')" 2>/dev/null; 
 else
     print_error "Flask dependency test failed."
     exit 1
-fi
-
-# Check if run script exists and make it executable
-print_status "Checking run script..."
-if [ -f "run_acep_hipaa.sh" ]; then
-    chmod +x run_acep_hipaa.sh
-    print_success "Run script permissions updated."
-else
-    print_warning "Run script not found. Please ensure run_acep_hipaa.sh exists."
 fi
 
 # Final setup test
@@ -203,18 +221,20 @@ echo ""
 
 print_success "ACEP HIPAA AUDIT ASSISTANT is ready to use!"
 echo ""
-echo "🚀 To start the application, run:"
-echo "   ./run_acep_hipaa.sh"
-echo ""
-echo "🌐 Access the application at: http://localhost:5000"
-echo "🔑 Default login credentials: acep / acep123"
-echo ""
-echo "📚 For more information, see README.md"
-echo ""
-echo "🏥 Happy HIPAA auditing!"
 
-# Clean up
+# Step 5: Launch Application
+print_step "Step 5: Launching application..."
+print_success "Setup completed! Launching ACEP HIPAA Audit Assistant..."
+echo ""
+echo "🚀 The application will start in 3 seconds..."
+echo "📱 Access at: http://localhost:5000"
+echo "🔑 Login: acep / acep123"
+echo ""
+
+sleep 3
+
+# Clean up virtual environment activation for the run script
 deactivate
 
-echo ""
-print_status "Setup completed! You can now run the application."
+# Launch the application
+./run_acep_hipaa.sh
