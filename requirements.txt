@@ -1,4 +1,4 @@
-# Core Flask Framework - Essential packages only
+# Core Flask Framework - Minimum requirements for HIPAA checklist
 Flask>=2.3.0,<3.0.0
 Flask-Login>=0.6.0,<1.0.0
 Werkzeug>=2.3.0,<3.0.0
@@ -11,7 +11,6 @@ python-dotenv>=1.0.0,<2.0.0
 Flask-WTF>=1.1.0,<2.0.0
 WTForms>=3.0.0,<4.0.0
 cryptography>=41.0.0,<42.0.0
-PyJWT>=2.8.0,<3.0.0
 
 # Database & ORM
 Flask-SQLAlchemy>=3.0.0,<4.0.0
@@ -19,17 +18,7 @@ SQLAlchemy>=2.0.0,<3.0.0
 
 # File Handling & Uploads
 Pillow>=10.0.0,<11.0.0
-# Note: python-magic requires libmagic system dependency
-
-# Data Processing & Validation
-pandas>=2.0.0,<3.0.0
-numpy>=1.24.0,<2.0.0
-
-# API & Serialization
-Flask-RESTful>=0.3.0,<1.0.0
-marshmallow>=3.20.0,<4.0.0
 
 # Utilities
-click>=8.1.0,<9.0.0
 itsdangerous>=2.1.0,<3.0.0
 MarkupSafe>=2.1.0,<3.0.0
