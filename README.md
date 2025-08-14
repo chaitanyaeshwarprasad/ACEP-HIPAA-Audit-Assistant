@@ -31,25 +31,6 @@
 
 ---
 
-## 🚀 **Quick Start**
-
-### **⚡ One-Command Setup (Kali Linux)**
-```bash
-# Clone and setup in one command
-git clone https://github.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant.git && \
-cd ACEP-HIPAA-Audit-Assistant && \
-chmod +x *.sh && \
-./acep_hipaa_auto_setup.sh
-```
-
-### **🚀 Launch Application**
-```bash
-# Start the HIPAA Audit Assistant
-./run_acep_hipaa.sh
-```
-
----
-
 ## ⚙️ **System Requirements**
 
 ### **🖥️ Operating System**
