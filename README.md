@@ -322,20 +322,6 @@ docker-compose up -d --scale web=3
 
 ---
 
-## 📄 **License & Legal**
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-**MIT License Benefits:**
-- ✅ **Commercial Use** - Deploy in healthcare organizations
-- ✅ **Modification** - Customize for specific needs
-- ✅ **Distribution** - Share with colleagues and clients
-- ✅ **Private Use** - Internal deployment and testing
-- ✅ **No Liability** - Clear legal protection
-- ✅ **No Warranty** - Transparent terms
-
----
-
 ## 👨‍💻 **Creator & Maintainer**
 
 ### **👤 Chaitanya Eshwar Prasad**
