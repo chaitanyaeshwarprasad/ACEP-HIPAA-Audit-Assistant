@@ -70,11 +70,10 @@ curl -sSL https://raw.githubusercontent.com/chaitanyaeshwarprasad/ACEP-HIPAA-Aud
 **What you'll get:**
 - ✅ Complete HIPAA compliance tool
 - ✅ Professional web interface
-- ✅ All dependencies installed
-- ✅ Application running automatically
+- ✅ All dependencies installed automatically
+- ✅ Application running and ready to use
 - ✅ Access at http://localhost:5000
-
-**Default login:** `acep` / `acep123`
+- ✅ Default login: `acep` / `acep123`
 
 ---
 
@@ -97,14 +96,24 @@ chmod +x install.sh
 ```
 
 #### **🎯 What Happens Automatically:**
-1. ✅ **Repository Setup** - Clones from GitHub (if needed)
-2. ✅ **Environment Setup** - Creates Python virtual environment
-3. ✅ **Dependency Installation** - Installs all required packages
-4. ✅ **Application Configuration** - Sets up directories and permissions
-5. ✅ **Testing & Validation** - Verifies everything works correctly
-6. ✅ **Launch** - Starts the application automatically
+1. ✅ **System Check** - Detects your operating system and package manager
+2. ✅ **Dependencies** - Installs system packages (git, python3, pip, etc.)
+3. ✅ **Python Setup** - Installs Python 3.8+ if needed
+4. ✅ **Repository Setup** - Clones from GitHub (if needed)
+5. ✅ **Environment Setup** - Creates Python virtual environment
+6. ✅ **Package Installation** - Installs all required Python packages
+7. ✅ **Configuration** - Sets up directories, permissions, and database
+8. ✅ **Testing & Validation** - Verifies everything works correctly
+9. ✅ **Launch** - Starts the application automatically
 
 **🎉 That's it! One command gets everything running.**
+
+#### **🔍 Installation Details:**
+- **Time**: Usually 2-5 minutes depending on your system
+- **Internet**: Requires stable internet connection for downloads
+- **Permissions**: May ask for sudo/admin privileges for system packages
+- **Storage**: Uses approximately 500MB of disk space
+- **Memory**: Requires 2GB+ RAM during installation
 
 ---
 
@@ -134,7 +143,22 @@ chmod +x install.sh
 
 ### **📥 Method 3: Manual Setup (Expert Users)**
 
-#### **Step 1: Install Python Dependencies**
+#### **Step 1: Install System Dependencies**
+```bash
+# Ubuntu/Debian/Kali Linux
+sudo apt update
+sudo apt install -y python3 python3-pip python3-venv git sqlite3 curl wget
+
+# CentOS/RHEL/Fedora
+sudo yum install -y python3 python3-pip python3-venv git sqlite3 curl wget
+# OR for newer systems
+sudo dnf install -y python3 python3-pip python3-venv git sqlite3 curl wget
+
+# macOS (using Homebrew)
+brew install python3 git sqlite3 curl wget
+```
+
+#### **Step 2: Install Python Dependencies**
 ```bash
 # Create virtual environment (recommended)
 python3 -m venv venv
@@ -144,21 +168,71 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-#### **Step 2: Run Application**
+#### **Step 3: Run Application**
 ```bash
 python app.py
 ```
 
 ---
 
-### **📥 Method 4: Docker Setup**
-```bash
-# Build Docker image
-docker build -t acep-hipaa-assistant .
+### **🌐 Cross-Platform Compatibility**
 
-# Run container
-docker run -p 5000:5000 acep-hipaa-assistant
+#### **✅ Supported Operating Systems:**
+- **Linux**: Ubuntu 18.04+, Debian 10+, Kali Linux, CentOS 7+, RHEL 7+
+- **macOS**: 10.15+ (Catalina and newer)
+- **Windows**: Windows 10+ with WSL2 (Windows Subsystem for Linux)
+
+#### **🐍 Python Requirements:**
+- **Minimum**: Python 3.8
+- **Recommended**: Python 3.9 - 3.11
+- **Latest**: Python 3.12+ (fully supported)
+
+#### **💻 System Requirements:**
+- **RAM**: 2GB minimum, 4GB+ recommended
+- **Storage**: 500MB free space
+- **Network**: Internet connection for setup
+- **Browser**: Modern browser with JavaScript enabled
+
+---
+
+### **🔧 Post-Installation**
+
+#### **🚀 Starting the Application:**
+```bash
+# If using the install script, it starts automatically
+# To start manually:
+python app.py
+
+# Or activate virtual environment first:
+source venv/bin/activate
+python app.py
 ```
+
+#### **🌐 Accessing the Application:**
+- **URL**: http://localhost:5000
+- **Default Credentials**: `acep` / `acep123`
+- **Admin Panel**: Available after login
+
+#### **📁 Important Directories:**
+- **Application**: `./` (project root)
+- **Database**: `./instance/` (created automatically)
+- **Uploads**: `./static/uploads/` (for file uploads)
+- **Logs**: Console output (can be redirected to file)
+
+---
+
+### **❓ Need Help?**
+
+#### **🔍 Common Issues:**
+- **Permission Denied**: Use `sudo` for system package installation
+- **Python Not Found**: The install script handles this automatically
+- **Port Already in Use**: Change port in `app.py` or stop conflicting services
+- **Dependency Errors**: Try running `./install.sh` again
+
+#### **📞 Support:**
+- **Documentation**: Check this README first
+- **Issues**: Report on GitHub Issues page
+- **Community**: Check Discussions tab on GitHub
 
 ---
 
@@ -485,7 +559,7 @@ docker-compose up -d --scale web=3
 
 > *"Empowering healthcare organizations with modern, efficient compliance tools that protect patient privacy and ensure regulatory adherence."*
 
-### **🌐 Connect & Follow**
+### **�� Connect & Follow**
 | Platform | Link | Description |
 |----------|------|-------------|
 | **🌐 Website** | [chaitanyaeshwarprasad.com](https://chaitanyaeshwarprasad.com) | Personal portfolio and blog |
