@@ -77,6 +77,23 @@ curl -sSL https://raw.githubusercontent.com/chaitanyaeshwarprasad/ACEP-HIPAA-Aud
 
 ---
 
+### **⚡ Quick Reference - Get Running in 10 Seconds**
+
+**Already installed? Just run:**
+```bash
+./run_acep_hipaa.sh
+```
+
+**Need to install? One command:**
+```bash
+curl -sSL https://raw.githubusercontent.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant/main/install.sh | bash
+```
+
+**Access at:** http://localhost:5000  
+**Login:** `acep` / `acep123`
+
+---
+
 ### **📥 Method 1: One-Command Setup (Recommended - Super Easy!)**
 
 #### **🚀 Quick Start (Linux/macOS)**
@@ -114,6 +131,13 @@ chmod +x install.sh
 - **Permissions**: May ask for sudo/admin privileges for system packages
 - **Storage**: Uses approximately 500MB of disk space
 - **Memory**: Requires 2GB+ RAM during installation
+
+#### **📋 What You Get After Installation:**
+- **`install.sh`** - Comprehensive setup script for future use
+- **`run_acep_hipaa.sh`** - Easy launcher script to start the application
+- **`requirements.txt`** - Python dependencies list
+- **`app.py`** - Main Flask application
+- **Complete web interface** - Ready to use at http://localhost:5000
 
 ---
 
@@ -198,6 +222,17 @@ python app.py
 ### **🔧 Post-Installation**
 
 #### **🚀 Starting the Application:**
+
+**Option 1: Using the Launcher Script (Recommended)**
+```bash
+# Make the launcher script executable
+chmod +x run_acep_hipaa.sh
+
+# Start the application
+./run_acep_hipaa.sh
+```
+
+**Option 2: Manual Start**
 ```bash
 # If using the install script, it starts automatically
 # To start manually:
@@ -207,6 +242,14 @@ python app.py
 source venv/bin/activate
 python app.py
 ```
+
+#### **🎯 What the Launcher Script Does:**
+- ✅ **Activates Virtual Environment** - Ensures all dependencies are available
+- ✅ **Checks Dependencies** - Verifies Python and required packages
+- ✅ **Sets Environment Variables** - Configures Flask development mode
+- ✅ **Starts Web Server** - Launches on http://localhost:5000
+- ✅ **Shows Access Info** - Displays login credentials and URL
+- ✅ **Graceful Shutdown** - Handles Ctrl+C properly
 
 #### **🌐 Accessing the Application:**
 - **URL**: http://localhost:5000
@@ -218,6 +261,16 @@ python app.py
 - **Database**: `./instance/` (created automatically)
 - **Uploads**: `./static/uploads/` (for file uploads)
 - **Logs**: Console output (can be redirected to file)
+
+#### **🔄 Restarting the Application:**
+```bash
+# Stop with Ctrl+C, then restart:
+./run_acep_hipaa.sh
+
+# Or restart manually:
+source venv/bin/activate
+python app.py
+```
 
 ---
 
