@@ -296,20 +296,6 @@ docker-compose up -d --scale web=3
 
 ---
 
-## 📄 **License**
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-**MIT License Benefits:**
-- ✅ Commercial use allowed
-- ✅ Modification permitted
-- ✅ Distribution allowed
-- ✅ Private use allowed
-- ✅ No liability
-- ✅ No warranty
-
----
-
 ## 👨‍💻 **Creator & Maintainer**
 
 ### **👤 Chaitanya Eshwar Prasad**
@@ -341,14 +327,6 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 5. Submit a pull request
 
 ---
-
-## 📞 **Support & Community**
-
-### **🆘 Getting Help**
-- **📖 Documentation**: Check this README first
-- **🐛 Issues**: Report bugs on GitHub Issues
-- **💬 Discussions**: Join GitHub Discussions
-- **📧 Email**: Contact via LinkedIn
 
 ### **🌟 Star & Share**
 If this project helps you, please:
