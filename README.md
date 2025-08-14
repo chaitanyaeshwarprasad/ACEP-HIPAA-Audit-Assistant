@@ -22,7 +22,7 @@
 
 ## 🎯 **Project Overview**
 
-The **ACEP HIPAA Audit Assistant** is a comprehensive, enterprise-grade healthcare compliance management system designed to streamline and automate HIPAA Security Rule assessments. Built with modern web technologies and a focus on user experience, this tool empowers healthcare organizations to achieve and maintain full HIPAA compliance through systematic evaluation, evidence management, and risk assessment.
+The **ACEP HIPAA Audit Assistant** is a comprehensive, healthcare compliance management system designed to streamline and automate HIPAA Security Rule assessments. Built with modern web technologies and a focus on user experience, this tool empowers healthcare organizations to achieve and maintain full HIPAA compliance through systematic evaluation, evidence management, and risk assessment.
 
 ### **🌟 Why Choose ACEP HIPAA Audit Assistant?**
 
