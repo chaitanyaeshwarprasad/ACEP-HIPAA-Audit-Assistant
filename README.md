@@ -61,10 +61,28 @@ The **ACEP HIPAA Audit Assistant** is a comprehensive, healthcare compliance man
 
 ### **🚀 Quick Start Guide**
 
-**Want to get running in 30 seconds?** Use this one command:
-
+#### **Step 1: Clone Repository**
 ```bash
-curl -sSL https://raw.githubusercontent.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant/main/install.sh | bash
+# Clone the repository
+git clone https://github.com/chaitanyaeshwarprasad/ACEP-HIPAA-Audit-Assistant.git
+
+# Navigate to project directory
+cd ACEP-HIPAA-Audit-Assistant
+```
+
+#### **Step 2: Permissions**
+```bash
+chmod +x run_acep_hipaa.sh install.sh
+```
+
+#### **Step 3: **Permissions**
+```bash
+./install.sh
+```
+
+#### **Step 4: **Run Application**
+```bash
+./run_acep_hipaa.sh
 ```
 
 **What you'll get:**

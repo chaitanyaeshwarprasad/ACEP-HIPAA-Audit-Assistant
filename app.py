@@ -202,29 +202,61 @@ def init_database():
 def load_hipaa_requirements(conn):
     """Load HIPAA Security Rule requirements into database"""
     requirements = [
-        # Administrative Safeguards
-        ('A.1', 'Security Management Process', 'Implement policies and procedures to prevent, detect, contain, and correct security violations. This includes risk analysis, risk management, sanction policy, and information system activity review.', 'Administrative Safeguards'),
-        ('A.2', 'Assigned Security Responsibility', 'Identify the security official who is responsible for the development and implementation of the policies and procedures required by the Security Rule.', 'Administrative Safeguards'),
-        ('A.3', 'Workforce Security', 'Implement procedures for the authorization and/or supervision of workforce members who work with ePHI, and procedures for determining access to ePHI.', 'Administrative Safeguards'),
-        ('A.4', 'Information Access Management', 'Implement policies and procedures for granting access to ePHI, including access authorization, access establishment, and access modification.', 'Administrative Safeguards'),
-        ('A.5', 'Security Awareness and Training Program', 'Implement a security awareness and training program for all members of the workforce, including management.', 'Administrative Safeguards'),
-        ('A.6', 'Security Incident Procedures', 'Implement policies and procedures to address security incidents, including identification and response to suspected or known security incidents.', 'Administrative Safeguards'),
-        ('A.7', 'Contingency Plan', 'Establish policies and procedures for responding to an emergency or other occurrence that damages systems containing ePHI.', 'Administrative Safeguards'),
-        ('A.8', 'Evaluation', 'Perform a periodic technical and non-technical evaluation to establish the extent to which an entity\'s security policies and procedures meet the requirements of the Security Rule.', 'Administrative Safeguards'),
-        ('A.9', 'Business Associate Contracts and Other Arrangements', 'Document the satisfactory assurances required by the Privacy Rule through written contracts or other arrangements with business associates.', 'Administrative Safeguards'),
+        # 1. Administrative Safeguards (Security Rule)
+        ('A.1', 'Appoint a HIPAA Privacy Officer and HIPAA Security Officer', 'Designate and document individuals responsible for HIPAA privacy and security compliance within the organization.', 'Administrative Safeguards'),
+        ('A.2', 'Conduct and document a risk assessment of PHI and ePHI', 'Perform comprehensive risk analysis to identify potential threats and vulnerabilities to protected health information.', 'Administrative Safeguards'),
+        ('A.3', 'Implement a risk management plan', 'Develop and execute strategies to address identified risks and reduce them to acceptable levels.', 'Administrative Safeguards'),
+        ('A.4', 'Develop and enforce policies and procedures', 'Create comprehensive written policies and procedures for HIPAA compliance and ensure workforce adherence.', 'Administrative Safeguards'),
+        ('A.5', 'Train all employees on HIPAA policies and security awareness', 'Provide regular training to all workforce members on HIPAA requirements and security best practices.', 'Administrative Safeguards'),
+        ('A.6', 'Perform periodic security audits and reviews', 'Conduct regular assessments to evaluate compliance with HIPAA Security Rule requirements.', 'Administrative Safeguards'),
+        ('A.7', 'Implement sanction policies for violations', 'Establish and enforce disciplinary procedures for workforce members who violate HIPAA policies.', 'Administrative Safeguards'),
         
-        # Physical Safeguards
-        ('P.1', 'Facility Access Controls', 'Implement policies and procedures to limit physical access to electronic information systems and the facility or facilities in which they are housed.', 'Physical Safeguards'),
-        ('P.2', 'Workstation Use', 'Implement policies and procedures that specify the proper functions to be performed, the manner in which those functions are to be performed, and the physical attributes of the surroundings of a specific workstation or class of workstation.', 'Physical Safeguards'),
-        ('P.3', 'Workstation Security', 'Implement physical safeguards for all workstations that access ePHI to restrict access to authorized users.', 'Physical Safeguards'),
-        ('P.4', 'Device and Media Controls', 'Implement policies and procedures that govern the receipt and removal of hardware and electronic media that contain ePHI into and out of a facility.', 'Physical Safeguards'),
+        # 2. Physical Safeguards (Security Rule)
+        ('P.1', 'Control facility access to areas where ePHI is stored', 'Implement physical access controls to restrict entry to locations containing electronic protected health information.', 'Physical Safeguards'),
+        ('P.2', 'Implement workstation use and security policies', 'Establish policies governing the proper use and security of workstations that access ePHI.', 'Physical Safeguards'),
+        ('P.3', 'Secure mobile devices and portable media', 'Implement safeguards to protect ePHI on mobile devices and portable storage media.', 'Physical Safeguards'),
+        ('P.4', 'Protect and monitor server rooms and equipment', 'Secure server rooms and critical equipment with appropriate physical controls and monitoring.', 'Physical Safeguards'),
         
-        # Technical Safeguards
-        ('T.1', 'Access Control', 'Implement technical policies and procedures for electronic information systems that maintain ePHI to allow access only to those persons or software programs that have been granted access rights.', 'Technical Safeguards'),
-        ('T.2', 'Audit Controls', 'Implement hardware, software, and/or procedural mechanisms that record and examine activity in information systems that contain or use ePHI.', 'Technical Safeguards'),
-        ('T.3', 'Integrity', 'Implement policies and procedures to protect ePHI from improper alteration or destruction.', 'Technical Safeguards'),
-        ('T.4', 'Person or Entity Authentication', 'Implement procedures to verify that a person or entity seeking access to ePHI is the one claimed.', 'Technical Safeguards'),
-        ('T.5', 'Transmission Security', 'Implement technical security measures to guard against unauthorized access to ePHI that is being transmitted over an electronic communications network.', 'Technical Safeguards')
+        # 3. Technical Safeguards (Security Rule)
+        ('T.1', 'Implement access controls (unique user IDs, emergency access)', 'Establish unique user identification and emergency access procedures for ePHI systems.', 'Technical Safeguards'),
+        ('T.2', 'Use encryption for ePHI in transit and at rest', 'Implement encryption technologies to protect ePHI during transmission and storage.', 'Technical Safeguards'),
+        ('T.3', 'Enable audit controls to log access to ePHI', 'Implement mechanisms to record and examine activity in information systems containing ePHI.', 'Technical Safeguards'),
+        ('T.4', 'Use automatic logoff and session timeouts', 'Configure systems to automatically terminate sessions after periods of inactivity.', 'Technical Safeguards'),
+        ('T.5', 'Ensure data integrity mechanisms are in place', 'Implement policies and procedures to protect ePHI from improper alteration or destruction.', 'Technical Safeguards'),
+        ('T.6', 'Implement transmission security (e.g., TLS, VPN)', 'Use technical security measures to guard against unauthorized access to ePHI during transmission.', 'Technical Safeguards'),
+        
+        # 4. Privacy Rule Requirements
+        ('PR.1', 'Provide Notice of Privacy Practices (NPP) to patients', 'Distribute written notice explaining how the organization uses and discloses PHI.', 'Privacy Rule Requirements'),
+        ('PR.2', 'Limit use/disclosure of PHI to the minimum necessary', 'Implement policies to use or disclose only the minimum PHI necessary for the intended purpose.', 'Privacy Rule Requirements'),
+        ('PR.3', 'Obtain authorization for non-routine disclosures', 'Secure written permission from individuals before using or disclosing PHI for non-routine purposes.', 'Privacy Rule Requirements'),
+        ('PR.4', 'Grant individuals access to their health records', 'Provide individuals with access to inspect and obtain copies of their PHI.', 'Privacy Rule Requirements'),
+        ('PR.5', 'Allow corrections/amendments to PHI', 'Establish procedures for individuals to request corrections or amendments to their PHI.', 'Privacy Rule Requirements'),
+        ('PR.6', 'Implement policies for handling requests for restriction', 'Develop procedures to address individual requests to restrict certain uses and disclosures of PHI.', 'Privacy Rule Requirements'),
+        ('PR.7', 'Verify identity before disclosing PHI', 'Implement reasonable procedures to verify the identity of individuals requesting PHI.', 'Privacy Rule Requirements'),
+        
+        # 5. Breach Notification Rule
+        ('BN.1', 'Develop a Breach Notification Policy', 'Create comprehensive policies and procedures for identifying and responding to breaches of unsecured PHI.', 'Breach Notification Rule'),
+        ('BN.2', 'Maintain a log of all security incidents and breaches', 'Document all security incidents and breaches for tracking and reporting purposes.', 'Breach Notification Rule'),
+        ('BN.3', 'Notify affected individuals within 60 days of discovery', 'Provide notification to individuals whose unsecured PHI has been compromised within required timeframe.', 'Breach Notification Rule'),
+        ('BN.4', 'Notify the HHS Office for Civil Rights (OCR)', 'Report breaches to OCR according to established timelines based on number of affected individuals.', 'Breach Notification Rule'),
+        ('BN.5', 'Notify the media (if >500 individuals affected in a region)', 'Provide media notification for breaches affecting more than 500 individuals in a state or region.', 'Breach Notification Rule'),
+        
+        # 6. Business Associate Agreements (BAAs)
+        ('BA.1', 'Identify all business associates (vendors handling PHI)', 'Maintain comprehensive inventory of all business associates who create, receive, maintain, or transmit PHI.', 'Business Associate Agreements'),
+        ('BA.2', 'Execute HIPAA-compliant BAAs with each associate', 'Establish written agreements ensuring business associates comply with applicable HIPAA requirements.', 'Business Associate Agreements'),
+        ('BA.3', 'Ensure business associates are HIPAA compliant', 'Verify that business associates have appropriate safeguards and compliance measures in place.', 'Business Associate Agreements'),
+        ('BA.4', 'Review BAAs regularly for compliance updates', 'Periodically review and update business associate agreements to maintain HIPAA compliance.', 'Business Associate Agreements'),
+        
+        # 7. Documentation & Record-Keeping
+        ('DR.1', 'Maintain HIPAA-related policies and procedures for 6 years', 'Retain all HIPAA-related documentation for the required six-year retention period.', 'Documentation & Record-Keeping'),
+        ('DR.2', 'Keep records of training, risk assessments, and compliance efforts', 'Document all training activities, risk assessments, and compliance initiatives for audit purposes.', 'Documentation & Record-Keeping'),
+        ('DR.3', 'Document all breach investigations and outcomes', 'Maintain comprehensive records of breach investigations, findings, and remediation actions.', 'Documentation & Record-Keeping'),
+        
+        # 8. Ongoing Monitoring & Auditing
+        ('OA.1', 'Conduct periodic internal audits', 'Perform regular internal assessments to evaluate ongoing compliance with HIPAA requirements.', 'Ongoing Monitoring & Auditing'),
+        ('OA.2', 'Review access logs for unauthorized activity', 'Regularly examine system access logs to identify and investigate suspicious or unauthorized activities.', 'Ongoing Monitoring & Auditing'),
+        ('OA.3', 'Monitor compliance with technical and physical safeguards', 'Continuously assess adherence to technical and physical security measures.', 'Ongoing Monitoring & Auditing'),
+        ('OA.4', 'Update policies/procedures as needed', 'Maintain current policies and procedures by updating them based on changes in operations or regulations.', 'Ongoing Monitoring & Auditing')
     ]
     
     for requirement_id, title, description, category in requirements:
@@ -975,6 +1007,29 @@ def debug_database():
             'error': str(e),
             'database_file': DATABASE
         })
+
+@app.route('/debug/reset-requirements')
+@login_required
+def reset_requirements():
+    """Reset requirements to load new minimum requirements"""
+    try:
+        conn = get_db_connection()
+        
+        # Clear existing requirements
+        conn.execute('DELETE FROM hipaa_requirements')
+        conn.commit()
+        
+        # Reload new requirements
+        load_hipaa_requirements(conn)
+        
+        conn.close()
+        
+        flash('Requirements have been reset and updated with new minimum requirements!', 'success')
+        return redirect(url_for('audit_checklist'))
+        
+    except Exception as e:
+        flash(f'Error resetting requirements: {str(e)}', 'error')
+        return redirect(url_for('audit_checklist'))
 
 if __name__ == '__main__':
     init_database()
